@@ -1,4 +1,4 @@
-module github.com/xakepp35/gitlab-mirror
+module github.com/xakepp35/glass
 
 go 1.24.6
 
