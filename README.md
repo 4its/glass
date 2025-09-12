@@ -113,7 +113,7 @@ sh -c "$(wget -qO- https://raw.githubusercontent.com/xakepp35/glass/main/install
 | `-archived`           | `INCLUDE_ARCHIVED`   | Включать архивные проекты                                    | `false`           |
 | `-http-verbose`       | `HTTP_VERBOSE`       | Логировать HTTP-запросы                                      | `false`           |
 | `-timeout`            | `TIMEOUT`            | Таймаут HTTP на запрос                                       | `30s`             |
-| `-mirror`             | `MIRROR`             | Режим `git clone --mirror`                                   | `true`            |
+| `-mirror`             | `MIRROR`             | Режим `git clone --mirror`                                   | `false`           |
 | `-recurse-submodules` | `RECURSE_SUBMODULES` | Рекурсивные сабмодули (для non-mirror)                       | `false`           |
 | `-checkout-default`   | `CHECKOUT_DEFAULT`   | `checkout` default-ветки после fetch                         | `true`            |
 | `-ssh`                | `SSH_MODE`           | Использовать SSH-URL вместо HTTPS+PAT                        | `false`           |

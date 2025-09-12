@@ -67,7 +67,7 @@ func parseFlags() *Config {
 	flag.BoolVar(&cfg.IncludeArchived, "archived", envOrBool("INCLUDE_ARCHIVED", false), "Include archived projects")
 	flag.BoolVar(&cfg.VerboseHTTP, "http-verbose", envOrBool("HTTP_VERBOSE", false), "Log HTTP requests")
 	flag.DurationVar(&cfg.Timeout, "timeout", envOrDuration("TIMEOUT", 30*time.Second), "HTTP timeout per request")
-	flag.BoolVar(&cfg.Mirror, "mirror", envOrBool("MIRROR", true), "Mirror mode (all refs, bare). If false, do a normal working-tree clone.")
+	flag.BoolVar(&cfg.Mirror, "mirror", envOrBool("MIRROR", false), "Mirror mode (all refs, bare). If false, do a normal working-tree clone.")
 	flag.BoolVar(&cfg.RecurseSubmodules, "recurse-submodules", envOrBool("RECURSE_SUBMODULES", false), "Recurse submodules for non-mirror clones")
 	flag.BoolVar(&cfg.CheckoutDefault, "checkout-default", envOrBool("CHECKOUT_DEFAULT", true), "Checkout project default branch after fetch/clone (non-mirror)")
 	flag.BoolVar(&cfg.UseSSH, "ssh", envOrBool("SSH_MODE", false), "Use SSH clone URLs (requires SSH keys configured)")
