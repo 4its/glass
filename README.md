@@ -17,8 +17,8 @@
 ## 🔧 Возможности
 
 * **Режимы**:
-  * `--mirror` — bare-зеркало (`git clone --mirror`, все ветки/теги/refs).
-  * `--mirror=false` — обычный клон с рабочим деревом; обновление через `fetch --all --prune`, опц. `checkout` default-ветки.
+  * `--mirror` — bare-зеркало для DevOps (`git clone --mirror`, все ветки/теги/refs).
+  * `--mirror=false` — по умолчанию, обычный клон с рабочим деревом; обновление через `fetch --all --prune`, опц. `checkout` default-ветки.
 * **Фильтры**: по namespace (regexp), по активности (`--since`), по размеру (`--max-size-mb`).
 * **Протоколы**: HTTPS+PAT (по умолчанию) или `--ssh` для SSH-URL.
 * **Безопасные апдейты**: `--safe-update` (skip, если дерево грязное), `--force-reset` (жёсткий reset).
@@ -93,12 +93,6 @@ sh -c "$(wget -qO- https://raw.githubusercontent.com/xakepp35/glass/main/install
 
 ---
 
-## ⚙️ Флаги
-
-👍 окей, бро. Вот аккуратно сведённая секция с флагами и переменными окружения в одну таблицу. Я убрал лишние повторы и вынес **ENV аналоги** в отдельную колонку — так сразу видно, что чему соответствует.
-
----
-
 ## ⚙️ Флаги и переменные окружения
 
 | Флаг                  | ENV аналог           | Описание                                                     | По умолчанию      |
@@ -140,16 +134,7 @@ sh -c "$(wget -qO- https://raw.githubusercontent.com/xakepp35/glass/main/install
 
 ---
 
-## 📊 Логи и прогресс
-
-* Логи в стиле `zerolog`, парсятся в JSON/читаемы в консоли.
-* Каждые 2s печатается прогресс: `total / in_progress / done`.
-* `DEBUG=1` даёт больше деталей (stdout/stderr git, HTTP URLs без токена).
-* В конце — сводка по проектам.
-
----
-
-## ⏰ Интеграция с systemd (пример)
+## ⏰ Интеграция с systemd
 
 `~/.config/systemd/user/glass.service`:
 
@@ -161,7 +146,7 @@ Description=GLASS nightly sync
 Environment=GL_BASE_URL=https://git.my.com
 Environment=DEST_DIR=%h/git.my.com
 Environment=CONCURRENCY=8
-ExecStart=%h/bin/glass -mirror=false -safe-update -since=168h
+ExecStart=%h/bin/glass -safe-update -since=168h
 Restart=on-failure
 ```
 
@@ -188,15 +173,15 @@ systemctl --user enable --now glass.timer
 
 ## ❓ FAQ
 
-**Q:** Что выбрать: mirror или working-tree?
-**A:** Для бэкапов и CI — `--mirror`. Для разработки — `-mirror=false`.
+**Q:** Что выбрать: working-tree или mirror?
+**A:** Для бэкапов и CI — `--mirror`. Для разработки по умолчанию — `-mirror=false`.
 
 **Q:** Локальные правки не затрутся?
 **A:** Нет, при `-safe-update` грязные деревья не трогаются.
 
 **Q:** Некоторые проекты не подтянулись?
 **A:** Проверь фильтры (`-membership`, `-min-access`, `-include/-exclude`, `-since`, `-max-size-mb`).
-Также убедись, что токен имеет `read_api` и `read_repository`.
+Также убедись, что GitLab PAT токен имеет `read_api` и `read_repository`.
 
 **Q:** Как чистить локальные репы, к которым доступ сняли?
 **A:** Флаг `-prune-local`.
@@ -215,11 +200,11 @@ systemctl --user enable --now glass.timer
 
 ## 📜 Лицензия
 
-MIT (или корпоративная, если нужно).
+MIT
 
 ---
 
-## ✨ Манифест (FFF)
+## ✨ Манифест
 
 * **Focus** — запускай GLASS ежедневно, держи дерево в актуальном состоянии.
 * **Fast** — используй `-since` и фильтры, экономь время.
