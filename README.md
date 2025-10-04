@@ -1,4 +1,4 @@
-# 🚀 GLASS — GitLab Any Sync System
+# 🚀 GLASS — GitLab Awesome Sync System
 
 > ⚡ **Коротко:** один бинарь, который подтягивает *все видимые вам проекты GitLab* — быстро, безопасно, с двумя режимами: **working-tree** и **mirror**.  
 > Идеален как ежедневный “bootstrap & sync” для разработчиков и как лёгкий бэкап для команд.
@@ -17,12 +17,12 @@
 ## 🔧 Возможности
 
 * **Режимы**:
-  * `--mirror` — bare-зеркало для DevOps (`git clone --mirror`, все ветки/теги/refs).
-  * `--mirror=false` — по умолчанию, обычный клон с рабочим деревом; обновление через `fetch --all --prune`, опц. `checkout` default-ветки.
-* **Фильтры**: по namespace (regexp), по активности (`--since`), по размеру (`--max-size-mb`).
-* **Протоколы**: HTTPS+PAT (по умолчанию) или `--ssh` для SSH-URL.
-* **Безопасные апдейты**: `--safe-update` (skip, если дерево грязное), `--force-reset` (жёсткий reset).
-* **Прочее**: пагинация 100/страница, ретраи+backoff, `--prune-local` (удаление “сирот”), поддержка сабмодулей.
+  * `-mirror=false` (или опущено) — по умолчанию, обычный клон с рабочим деревом; обновление через `fetch --all --prune`, опц. `checkout` default-ветки.
+  * `-mirror` — bare-зеркало для DevOps (`git clone --mirror`, все ветки/теги/refs).
+* **Фильтры**: по namespace (regexp), по активности (`-since`), по размеру (`-max-size-mb`).
+* **Протоколы**: HTTPS+PAT (по умолчанию) или `-ssh` для SSH-URL.
+* **Безопасные апдейты**: `-safe-update` (skip, если дерево грязное), `-force-reset` (жёсткий reset).
+* **Прочее**: пагинация 100/страница, ретраи+backoff, `-prune-local` (удаление “сирот”), поддержка сабмодулей.
 
 ---
 
@@ -107,7 +107,7 @@ sh -c "$(wget -qO- https://raw.githubusercontent.com/xakepp35/glass/main/install
 | `-archived`           | `INCLUDE_ARCHIVED`   | Включать архивные проекты                                    | `false`           |
 | `-http-verbose`       | `HTTP_VERBOSE`       | Логировать HTTP-запросы                                      | `false`           |
 | `-timeout`            | `TIMEOUT`            | Таймаут HTTP на запрос                                       | `30s`             |
-| `-mirror`             | `MIRROR`             | Режим `git clone --mirror`                                   | `false`           |
+| `-mirror`             | `MIRROR`             | Режим `git clone -mirror`                                   | `false`           |
 | `-recurse-submodules` | `RECURSE_SUBMODULES` | Рекурсивные сабмодули (для non-mirror)                       | `false`           |
 | `-checkout-default`   | `CHECKOUT_DEFAULT`   | `checkout` default-ветки после fetch                         | `true`            |
 | `-ssh`                | `SSH_MODE`           | Использовать SSH-URL вместо HTTPS+PAT                        | `false`           |
@@ -174,7 +174,7 @@ systemctl --user enable --now glass.timer
 ## ❓ FAQ
 
 **Q:** Что выбрать: working-tree или mirror?
-**A:** Для бэкапов и CI — `--mirror`. Для разработки по умолчанию — `-mirror=false`.
+**A:** Для бэкапов и CI — `-mirror`. Для разработки по умолчанию — опустить параметр или `-mirror=false`.
 
 **Q:** Локальные правки не затрутся?
 **A:** Нет, при `-safe-update` грязные деревья не трогаются.
@@ -212,6 +212,6 @@ MIT
 
 ---
 
-**GLASS** — *GitLab Any Sync System*
+**GLASS** — *GitLab Awesome Sync System*
 
 🚀 Let’s ship • 🔥 Fortune favors the bold • 🤝 Respect builds strength
