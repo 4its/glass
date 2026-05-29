@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-REPO="https://github.com/xakepp35/glass"
+REPO="https://github.com/4its/glass"
 BIN="glass"
 INSTALL_DIR="/usr/local/bin"
 

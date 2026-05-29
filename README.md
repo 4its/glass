@@ -31,13 +31,13 @@
 Требуется: `git`, `go >= 1.24`, `curl` или `wget`.
 
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/xakepp35/glass/main/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/4its/glass/main/install.sh)"
 ```
 
 или:
 
 ```bash
-sh -c "$(wget -qO- https://raw.githubusercontent.com/xakepp35/glass/main/install.sh)"
+sh -c "$(wget -qO- https://raw.githubusercontent.com/4its/glass/main/install.sh)"
 ```
 
 Бинарь устанавливается в `/usr/local/bin/glass`.
